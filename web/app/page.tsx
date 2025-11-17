@@ -650,6 +650,26 @@ export default function Home() {
               <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: 'repeat(2, 1fr)' }, gap: 2 }}>
                   <Paper elevation={0} sx={{ p: 2, border: '2px solid #e5e7eb', '&:hover': { borderColor: '#2d8b7f', transform: 'translateY(-2px)' }, transition: 'all 0.3s' }}>
                     <Stack direction="row" spacing={2}>
+                      <Box sx={{ fontSize: 32 }}>🍺</Box>
+                      <Box sx={{ flex: 1 }}>
+                        <Stack direction="row" alignItems="center" spacing={1} sx={{ mb: 0.5 }}>
+                          <Typography variant="body1" sx={{ fontWeight: 700 }}>
+                            OnTap MN
+                          </Typography>
+                          <Chip label="Active" size="small" sx={{ backgroundColor: '#8b5cf6', color: 'white', fontSize: '0.7rem', height: '20px' }} />
+                        </Stack>
+                        <Typography variant="caption" sx={{ color: '#6b7280', display: 'block', mb: 1 }}>
+                          Bar events • Bingo & Raffles • Minnesota entertainment
+                        </Typography>
+                        <a href="https://ontap-mn.com/" target="_blank" rel="noopener noreferrer" style={{ color: '#2d8b7f', fontSize: '0.875rem', fontWeight: 600, textDecoration: 'none' }}>
+                          Visit Site →
+                        </a>
+                      </Box>
+                    </Stack>
+                  </Paper>
+
+                  <Paper elevation={0} sx={{ p: 2, border: '2px solid #e5e7eb', '&:hover': { borderColor: '#2d8b7f', transform: 'translateY(-2px)' }, transition: 'all 0.3s' }}>
+                    <Stack direction="row" spacing={2}>
                       <Box sx={{ fontSize: 32 }}>🏰</Box>
                       <Box sx={{ flex: 1 }}>
                         <Stack direction="row" alignItems="center" spacing={1} sx={{ mb: 0.5 }}>
