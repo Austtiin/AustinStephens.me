@@ -14,6 +14,7 @@ jobs:
     if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action != 'closed')
     runs-on: ubuntu-latest
     name: Build and Deploy Job
+
     steps:
       - uses: actions/checkout@v3
         with:
@@ -33,18 +34,19 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           action: "upload"
 
-          # 🔥 THESE THREE LINES ARE THE IMPORTANT PARTS
-          app_location: "web"
+          # === Main App Config ===
+          app_location: "web"               # Your Next.js app folder
           app_build_command: "npm run build"
-          app_artifact_location: "web/.next"
+          app_artifact_location: ".next"    # Correct build output path
 
-          # No API
+          # === No API (unless you add one later) ===
           api_location: ""
 
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
     runs-on: ubuntu-latest
     name: Close Pull Request Job
+
     steps:
       - name: Close Pull Request
         id: closepullrequest
