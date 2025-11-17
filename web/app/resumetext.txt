@@ -1,0 +1,73 @@
+SUMMARY Results-driven Computer Science graduate with expertise in cloud cost optimization, having managed 300+ Azure workloads and contributed to ~$250,000 in annual savings. Cloud FinOps Certified Practitioner and Azure Administrator Associate, experienced in cost modeling, cross-department collaboration, and improving IT operations. Skilled at aligning technical strategies with business goals to drive efficiency and informed decision-making.
+
+PROFESSIONAL EXPERIENCE
+
+Cloud Cost Efficiency Intern (FinOps) Hennepin County — Jun 2024 – Present (Remote/Hybrid)
+
+Helped manage 300+ Azure workloads, improving efficiency through rightsizing, reservations, and savings plans; supported ~$250,000 in annual cloud savings
+
+Attended transition to HALO ITSM with IT operations; contributed to cross-departmental knowledge-sharing; established user documentation
+
+Reinforced IT finance strategy through cost modeling and in-depth analysis of ~$1M in annual Azure cloud spend across Commercial and Government tenants
+
+Estimated cloud workload deployments (including IoT and data-heavy workloads) while supporting budget forecasts to expand business value from cloud spend
+
+Defined, created, and implemented 10+ key metrics; contributed to development of in-house cloud cost monitoring tools
+
+Executive Associate Fuhr Enterprise — May 2022 – Present (Forest Lake, MN)
+
+Acted as IT generalist across 10+ buildings; supported POS systems, networking, server racks, and security equipment installation
+
+Developed & migrated dealership website hosting to Azure, achieving ~91% annual savings (from ~$5,400/year to ~$480/year) while enhancing UX/UI & secure admin portal
+
+Improved client communication, lead generation, and reporting using Office Suite and DMS; assisted with in-store sales and customer engagement
+
+Created marketing materials, infographics, and internal documents; supported sales initiatives and general business operations
+
+Led non-profit initiatives and managed partnerships with major corporate sponsors
+
+Managed online event ticketing, registration, and payment processing; provided ad-hoc administrative and HR support
+
+Student Ambassador Rasmussen University — Feb 2022 – Jun 2022 (Blaine, MN)
+
+Represented the university at front desk; supported academic staff with scheduling and correspondence
+
+Attended to and collaborated with 50–100 diverse audiences monthly
+
+Laboratory Phlebotomist MHealth – Fairview — Oct 2020 – Nov 2021 (Wyoming, MN)
+
+Collected and processed blood samples across ER, ICU, Med-Surge, OBGYN, and legal units
+
+Ensured data accuracy and adherence to LIS/HIS protocols in a high-pressure environment
+
+EDUCATION Bachelor of Science (B.S.) – Computer Science Rasmussen University | GPA: 3.66 | Jul 2023 – Jun 2025
+
+Associate of Science (A.S.) – Software Application Development Rasmussen University | GPA: 3.73 | Nov 2021 – Mar 2023
+
+KEY SKILLS
+
+Active Listening, Professional Correspondence, Cross-Department Teamwork
+
+Analytical Thinking, Process Improvement, Customer Engagement, Sales Support
+
+Project Support, Multitasking, Flexibility in Dynamic Environments
+
+TECHNICAL SKILLS
+
+Microsoft Azure (Cost Management, Resource Optimization, Governance)
+
+IT Infrastructure & Networking
+
+Programming, Scripting, Data Analysis
+
+HALO ITSM, Lightspeed POS, DMS, Microsoft Office Suite
+
+CERTIFICATIONS
+
+Microsoft: Azure Administrator Associate
+
+Microsoft: Azure Fundamentals
+
+FinOps Certified Practitioner
+
+CJIS: Privileged
