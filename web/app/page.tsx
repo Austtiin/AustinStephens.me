@@ -40,18 +40,122 @@ export default function Home() {
   ];
 
   return (
-    <div className="min-h-screen antialiased" style={{ background: '#f8fffe', color: 'var(--foreground)' }}>
+    <div className="min-h-screen antialiased" style={{ 
+      background: '#f8fffe', 
+      color: 'var(--foreground)',
+      backgroundImage: 'linear-gradient(rgba(45, 139, 127, 0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(45, 139, 127, 0.04) 1px, transparent 1px)',
+      backgroundSize: '20px 20px',
+      position: 'relative',
+      overflow: 'hidden'
+    }}>
+      
+      {/* Animated Dashboard Decorations */}
+      <style jsx>{`
+        @keyframes float-diagonal {
+          0%, 100% { transform: translate(0, 0) rotate(0deg); }
+          50% { transform: translate(30px, -30px) rotate(180deg); }
+        }
+        @keyframes float-slow {
+          0%, 100% { transform: translateY(0px); }
+          50% { transform: translateY(-20px); }
+        }
+        @keyframes pulse-glow {
+          0%, 100% { opacity: 0.15; transform: scale(1); }
+          50% { opacity: 0.25; transform: scale(1.1); }
+        }
+        @keyframes chart-line {
+          0% { stroke-dashoffset: 100; }
+          100% { stroke-dashoffset: 0; }
+        }
+        @keyframes pulse {
+          0%, 100% { opacity: 1; }
+          50% { opacity: 0.5; }
+        }
+      `}</style>
+
+      {/* Floating Dashboard Elements - Scrolling throughout the page */}
+      <div className="absolute pointer-events-none" style={{ top: 0, left: 0, right: 0, height: '100%', minHeight: '500vh', zIndex: 0 }}>
+        {/* After Hero Section - Dashboard Area Decorations */}
+        
+        {/* Near KPI Section - Top */}
+        <div className="absolute left-[5%] opacity-10" style={{ top: 'calc(100vh + 100px)', animation: 'float-slow 8s ease-in-out infinite' }}>
+          <div style={{ width: '80px', height: '60px', background: 'linear-gradient(135deg, #2d8b7f 0%, #9AD2CB 100%)', borderRadius: '8px', boxShadow: '0 4px 12px rgba(45, 139, 127, 0.2)' }}></div>
+        </div>
+
+        <div className="absolute right-[8%] opacity-15" style={{ top: 'calc(100vh + 200px)', animation: 'float-diagonal 12s ease-in-out infinite' }}>
+          <svg width="60" height="60" viewBox="0 0 60 60">
+            <circle cx="30" cy="30" r="25" fill="none" stroke="#d4a942" strokeWidth="3" strokeDasharray="40 120" transform="rotate(-90 30 30)">
+              <animateTransform attributeName="transform" type="rotate" from="0 30 30" to="360 30 30" dur="3s" repeatCount="indefinite"/>
+            </circle>
+          </svg>
+        </div>
+
+        {/* Near Skills Section - Middle */}
+        <div className="absolute left-[3%] opacity-12" style={{ top: 'calc(100vh + 800px)', animation: 'float-slow 10s ease-in-out infinite', animationDelay: '1s' }}>
+          <svg width="100" height="50" viewBox="0 0 100 50">
+            <path d="M 0 40 L 20 35 L 40 25 L 60 20 L 80 15 L 100 10" fill="none" stroke="#0ea5e9" strokeWidth="2" strokeDasharray="100" style={{ animation: 'chart-line 4s ease-in-out infinite' }}/>
+          </svg>
+        </div>
+
+        <div className="absolute right-[6%] opacity-10" style={{ top: 'calc(100vh + 1000px)', animation: 'float-diagonal 15s ease-in-out infinite', animationDelay: '2s' }}>
+          <svg width="90" height="40" viewBox="0 0 90 40">
+            <polyline points="0,30 15,25 30,20 45,15 60,18 75,10 90,5" fill="none" stroke="#10b981" strokeWidth="2"/>
+          </svg>
+        </div>
+
+        {/* Near Timeline Section */}
+        <div className="absolute left-[7%] opacity-12" style={{ top: 'calc(100vh + 1400px)', animation: 'float-slow 9s ease-in-out infinite', animationDelay: '3s' }}>
+          <div style={{ width: '70px', height: '28px', background: '#8b5cf6', borderRadius: '14px', boxShadow: '0 2px 8px rgba(139, 92, 246, 0.3)' }}></div>
+        </div>
+
+        <div className="absolute right-[10%] opacity-15" style={{ top: 'calc(100vh + 1600px)', animation: 'float-diagonal 11s ease-in-out infinite', animationDelay: '1.5s' }}>
+          <div style={{ position: 'relative', width: '50px', height: '50px' }}>
+            <div style={{ position: 'absolute', top: '0', left: '0', width: '12px', height: '12px', borderRadius: '50%', background: '#d4a942' }}></div>
+            <div style={{ position: 'absolute', top: '15px', left: '20px', width: '8px', height: '8px', borderRadius: '50%', background: '#2d8b7f' }}></div>
+            <div style={{ position: 'absolute', top: '30px', left: '8px', width: '10px', height: '10px', borderRadius: '50%', background: '#0ea5e9' }}></div>
+          </div>
+        </div>
+
+        {/* Near Technologies Section */}
+        <div className="absolute left-[10%] opacity-12" style={{ top: 'calc(100vh + 2000px)', animation: 'float-slow 8s ease-in-out infinite', animationDelay: '2s' }}>
+          <svg width="80" height="60" viewBox="0 0 80 60">
+            <rect x="5" y="5" width="30" height="50" rx="4" fill="none" stroke="#2d8b7f" strokeWidth="2"/>
+            <rect x="45" y="5" width="30" height="50" rx="4" fill="none" stroke="#d4a942" strokeWidth="2"/>
+          </svg>
+        </div>
+
+        <div className="absolute right-[12%] opacity-10" style={{ top: 'calc(100vh + 2300px)', animation: 'float-diagonal 10s ease-in-out infinite', animationDelay: '4s' }}>
+          <div style={{ width: '60px', height: '60px', borderRadius: '50%', border: '3px solid #0ea5e9', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <div style={{ width: '30px', height: '30px', borderRadius: '50%', background: '#10b981' }}></div>
+          </div>
+        </div>
+
+        {/* Near Learning Section */}
+        <div className="absolute left-[8%] opacity-13" style={{ top: 'calc(100vh + 2800px)', animation: 'float-slow 11s ease-in-out infinite', animationDelay: '1s' }}>
+          <svg width="70" height="70" viewBox="0 0 70 70">
+            <polygon points="35,10 60,60 10,60" fill="none" stroke="#f59e0b" strokeWidth="2"/>
+          </svg>
+        </div>
+
+        {/* Near Projects Section */}
+        <div className="absolute right-[7%] opacity-11" style={{ top: 'calc(100vh + 3200px)', animation: 'float-diagonal 13s ease-in-out infinite', animationDelay: '3s' }}>
+          <div style={{ width: '65px', height: '65px', background: 'linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%)', borderRadius: '12px', transform: 'rotate(45deg)' }}></div>
+        </div>
+
+        {/* Pulsing Glow Orbs - Distributed throughout scroll */}
+        <div className="absolute left-[15%] w-32 h-32 rounded-full blur-3xl" style={{ top: 'calc(100vh + 500px)', background: 'radial-gradient(circle, rgba(45, 139, 127, 0.2) 0%, transparent 70%)', animation: 'pulse-glow 6s ease-in-out infinite' }}></div>
+        <div className="absolute right-[20%] w-40 h-40 rounded-full blur-3xl" style={{ top: 'calc(100vh + 1200px)', background: 'radial-gradient(circle, rgba(212, 169, 66, 0.15) 0%, transparent 70%)', animation: 'pulse-glow 8s ease-in-out infinite', animationDelay: '2s' }}></div>
+        <div className="absolute left-[25%] w-36 h-36 rounded-full blur-3xl" style={{ top: 'calc(100vh + 2000px)', background: 'radial-gradient(circle, rgba(14, 165, 233, 0.15) 0%, transparent 70%)', animation: 'pulse-glow 7s ease-in-out infinite', animationDelay: '4s' }}></div>
+        <div className="absolute right-[18%] w-40 h-40 rounded-full blur-3xl" style={{ top: 'calc(100vh + 2700px)', background: 'radial-gradient(circle, rgba(139, 92, 246, 0.15) 0%, transparent 70%)', animation: 'pulse-glow 9s ease-in-out infinite', animationDelay: '1s' }}></div>
+        <div className="absolute left-[12%] w-36 h-36 rounded-full blur-3xl" style={{ top: 'calc(100vh + 3400px)', background: 'radial-gradient(circle, rgba(245, 158, 11, 0.15) 0%, transparent 70%)', animation: 'pulse-glow 7.5s ease-in-out infinite', animationDelay: '3s' }}></div>
+      </div>
 
       {/* HERO PAGE - Full Screen */}
-      <div className="min-h-screen flex flex-col items-center justify-center relative px-6 overflow-hidden">
-        <style jsx>{`
-          @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
-          }
-        `}</style>
+      <div className="min-h-screen flex flex-col items-center justify-center relative px-4 md:px-6 overflow-hidden pb-32 md:pb-20">
+        {/* White overlay to hide grid */}
+        <div className="absolute inset-0" style={{ background: '#f8fffe', zIndex: 0 }}></div>
         {/* Background Image */}
-        <div className="absolute inset-0">
+        <div className="absolute inset-0" style={{ zIndex: 1 }}>
           <Image
             src="/Files/20250111_195715.webp"
             alt="Background"
@@ -61,19 +165,24 @@ export default function Home() {
           />
           {/* Dark overlay for better text contrast */}
           <div className="absolute inset-0 bg-black/20"></div>
+          {/* Grid Pattern Overlay */}
+          <div className="absolute inset-0" style={{
+            backgroundImage: 'linear-gradient(rgba(154, 210, 203, 0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(154, 210, 203, 0.08) 1px, transparent 1px)',
+            backgroundSize: '20px 20px'
+          }}></div>
         </div>
         
-        <header className="flex flex-col items-center gap-3 text-center max-w-3xl relative z-10"
+        <header className="flex flex-col items-center gap-2 md:gap-3 text-center max-w-3xl relative z-10 w-full"
           style={{
             backgroundColor: 'rgba(154, 210, 203, 0.25)',
             backdropFilter: 'blur(16px)',
             WebkitBackdropFilter: 'blur(16px)',
-            borderRadius: '24px',
+            borderRadius: '16px',
             border: '1px solid rgba(255, 255, 255, 0.3)',
-            padding: '2rem',
+            padding: '1.25rem',
             boxShadow: '0 8px 32px rgba(0, 0, 0, 0.2)'
           }}>
-          <div className="relative h-24 w-24 overflow-hidden rounded-full" style={{ border: '3px solid rgba(255, 255, 255, 0.5)' }}>
+          <div className="relative h-20 w-20 md:h-24 md:w-24 overflow-hidden rounded-full" style={{ border: '3px solid rgba(255, 255, 255, 0.5)' }}>
             <Image
               src="/Files/95986072.jpg"
               alt="Austin Stephens"
@@ -84,8 +193,8 @@ export default function Home() {
           </div>
 
           <div>
-            <h1 className="text-4xl md:text-5xl font-extrabold mb-2 tracking-tight" style={{ color: '#ffffff', lineHeight: '1.1', textShadow: '0 2px 10px rgba(0,0,0,0.3)' }}>Hey, I&apos;m Austin 👋</h1>
-            <p className="text-xl md:text-2xl mb-2 font-bold tracking-tight" style={{ color: '#9AD2CB', letterSpacing: '-0.02em', textShadow: '0 1px 8px rgba(0,0,0,0.3)' }}>Junior Cloud Solutions Engineer</p>
+            <h1 className="text-3xl md:text-5xl font-extrabold mb-1 md:mb-2 tracking-tight" style={{ color: '#ffffff', lineHeight: '1.1', textShadow: '0 2px 10px rgba(0,0,0,0.3)' }}>Hey, I&apos;m Austin 👋</h1>
+            <p className="text-lg md:text-2xl mb-1 md:mb-2 font-bold tracking-tight" style={{ color: '#9AD2CB', letterSpacing: '-0.02em', textShadow: '0 1px 8px rgba(0,0,0,0.3)' }}>Junior Cloud Solutions Engineer</p>
             <p className="text-sm md:text-base max-w-2xl mx-auto leading-relaxed font-medium" style={{ color: '#f0f0f0' }}>
               Helped managed 300+ Azure workloads and contributed to $250K+ in annual savings<br />
               FinOps Certified Practitioner | Azure Administrator Associate
@@ -93,7 +202,7 @@ export default function Home() {
           </div>
 
           {/* CERTIFICATIONS IN HERO */}
-          <div className="mt-3 flex flex-wrap justify-center gap-3">
+          <div className="mt-2 md:mt-3 flex flex-wrap justify-center gap-2 md:gap-3">
             <div className="flex flex-col items-center gap-2 p-3 rounded-lg transition-transform hover:scale-105" style={{ backgroundColor: 'rgba(255, 255, 255, 0.35)', backdropFilter: 'blur(10px)', WebkitBackdropFilter: 'blur(10px)', border: '1px solid rgba(255, 255, 255, 0.4)', boxShadow: '0 4px 16px rgba(0,0,0,0.2)' }}>
               <div className="relative w-16 h-16">
                 <Image
@@ -105,8 +214,8 @@ export default function Home() {
               </div>
               <span className="text-[10px] font-semibold text-center" style={{ color: '#1a1d23' }}>FinOps</span>
             </div>
-            <div className="flex flex-col items-center gap-2 p-3 rounded-lg transition-transform hover:scale-105" style={{ backgroundColor: 'rgba(255, 255, 255, 0.35)', backdropFilter: 'blur(10px)', WebkitBackdropFilter: 'blur(10px)', border: '1px solid rgba(255, 255, 255, 0.4)', boxShadow: '0 4px 16px rgba(0,0,0,0.2)' }}>
-              <div className="relative w-16 h-16">
+            <div className="flex flex-col items-center gap-1 p-2 md:p-3 rounded-lg transition-transform hover:scale-105" style={{ backgroundColor: 'rgba(255, 255, 255, 0.35)', backdropFilter: 'blur(10px)', WebkitBackdropFilter: 'blur(10px)', border: '1px solid rgba(255, 255, 255, 0.4)', boxShadow: '0 4px 16px rgba(0,0,0,0.2)' }}>
+              <div className="relative w-12 h-12 md:w-16 md:h-16">
                 <Image
                   src="/Files/microsoft-certified-associate-badge-Photoroom.png"
                   alt="Microsoft Azure Administrator Associate"
@@ -116,8 +225,8 @@ export default function Home() {
               </div>
               <span className="text-[10px] font-semibold text-center" style={{ color: '#1a1d23' }}>AZ-104</span>
             </div>
-            <div className="flex flex-col items-center gap-2 p-3 rounded-lg transition-transform hover:scale-105" style={{ backgroundColor: 'rgba(255, 255, 255, 0.35)', backdropFilter: 'blur(10px)', WebkitBackdropFilter: 'blur(10px)', border: '1px solid rgba(255, 255, 255, 0.4)', boxShadow: '0 4px 16px rgba(0,0,0,0.2)' }}>
-              <div className="relative w-16 h-16">
+            <div className="flex flex-col items-center gap-1 p-2 md:p-3 rounded-lg transition-transform hover:scale-105" style={{ backgroundColor: 'rgba(255, 255, 255, 0.35)', backdropFilter: 'blur(10px)', WebkitBackdropFilter: 'blur(10px)', border: '1px solid rgba(255, 255, 255, 0.4)', boxShadow: '0 4px 16px rgba(0,0,0,0.2)' }}>
+              <div className="relative w-12 h-12 md:w-16 md:h-16">
                 <Image
                   src="/Files/microsoft-certified-fundamentals-badge-Photoroom.png"
                   alt="Microsoft Azure Fundamentals"
@@ -129,9 +238,9 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="mt-4 flex flex-wrap gap-2 justify-center">
+          <div className="mt-2 md:mt-4 flex flex-wrap gap-1.5 md:gap-2 justify-center">
             <a
-              className="inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium text-white no-print transition-all hover:scale-105 hover:shadow-xl shadow-lg"
+              className="inline-flex items-center gap-1.5 rounded-full px-3 md:px-5 py-2 md:py-2.5 text-xs md:text-sm font-medium text-white no-print transition-all hover:scale-105 hover:shadow-xl shadow-lg"
               style={{ backgroundColor: 'rgba(45, 139, 127, 0.9)', backdropFilter: 'blur(8px)', WebkitBackdropFilter: 'blur(8px)', fontWeight: '600', border: '1px solid rgba(255, 255, 255, 0.2)' }}
               onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'rgba(45, 139, 127, 1)'}
               onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'rgba(45, 139, 127, 0.9)'}
@@ -142,7 +251,7 @@ export default function Home() {
               💻 GitHub
             </a>
             <a
-              className="inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold no-print transition-all hover:scale-105 hover:shadow-xl shadow-md"
+              className="inline-flex items-center gap-1.5 rounded-full px-3 md:px-5 py-2 md:py-2.5 text-xs md:text-sm font-semibold no-print transition-all hover:scale-105 hover:shadow-xl shadow-md"
               style={{ border: '2px solid rgba(255, 255, 255, 0.4)', color: '#ffffff', backgroundColor: 'rgba(255, 255, 255, 0.15)', backdropFilter: 'blur(8px)', WebkitBackdropFilter: 'blur(8px)' }}
               href={resumePath}
               target="_blank"
@@ -151,14 +260,14 @@ export default function Home() {
               📄 Resume
             </a>
             <a
-              className="inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold no-print transition-all hover:scale-105 hover:shadow-xl shadow-md"
+              className="inline-flex items-center gap-1.5 rounded-full px-3 md:px-5 py-2 md:py-2.5 text-xs md:text-sm font-semibold no-print transition-all hover:scale-105 hover:shadow-xl shadow-md"
               style={{ border: '2px solid rgba(255, 255, 255, 0.4)', color: '#ffffff', backgroundColor: 'rgba(255, 255, 255, 0.15)', backdropFilter: 'blur(8px)', WebkitBackdropFilter: 'blur(8px)' }}
               href="mailto:AustinStephens103@gmail.com"
             >
               ✉️ Email
             </a>
             <a
-              className="inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium no-print transition-all hover:scale-105"
+              className="inline-flex items-center gap-1.5 rounded-full px-3 md:px-5 py-2 md:py-2.5 text-xs md:text-sm font-medium no-print transition-all hover:scale-105"
               style={{ border: '2px solid rgba(255, 255, 255, 0.3)', color: '#ffffff', backgroundColor: 'rgba(255, 255, 255, 0.1)', backdropFilter: 'blur(8px)', WebkitBackdropFilter: 'blur(8px)' }}
               href="tel:+16512318917"
             >
@@ -168,29 +277,29 @@ export default function Home() {
         </header>
 
         {/* Quick Navigation Section */}
-        <div className="absolute bottom-20 left-1/2 transform -translate-x-1/2 z-10 w-full max-w-4xl px-6">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
-            <a href="#azure-services" className="p-2 rounded-lg text-center transition-all hover:scale-105 hover:shadow-xl" style={{ backgroundColor: 'rgba(154, 210, 203, 0.2)', backdropFilter: 'blur(10px)', WebkitBackdropFilter: 'blur(10px)', border: '1px solid rgba(255, 255, 255, 0.3)' }}>
-              <div className="text-xl mb-0.5">☁️</div>
-              <span className="text-xs font-semibold" style={{ color: '#ffffff', textShadow: '0 1px 3px rgba(0,0,0,0.3)' }}>Azure Skills</span>
+        <div className="absolute bottom-4 md:bottom-20 left-1/2 transform -translate-x-1/2 z-10 w-full max-w-4xl px-4 md:px-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-1.5 md:gap-2">
+            <a href="#azure-services" className="p-1.5 md:p-2 rounded-lg text-center transition-all hover:scale-105 hover:shadow-xl" style={{ backgroundColor: 'rgba(154, 210, 203, 0.2)', backdropFilter: 'blur(10px)', WebkitBackdropFilter: 'blur(10px)', border: '1px solid rgba(255, 255, 255, 0.3)' }}>
+              <div className="text-lg md:text-xl mb-0.5">☁️</div>
+              <span className="text-[10px] md:text-xs font-semibold" style={{ color: '#ffffff', textShadow: '0 1px 3px rgba(0,0,0,0.3)' }}>Azure Skills</span>
             </a>
-            <a href="#education" className="p-2 rounded-lg text-center transition-all hover:scale-105 hover:shadow-xl" style={{ backgroundColor: 'rgba(154, 210, 203, 0.2)', backdropFilter: 'blur(10px)', WebkitBackdropFilter: 'blur(10px)', border: '1px solid rgba(255, 255, 255, 0.3)' }}>
-              <div className="text-xl mb-0.5">🎓</div>
-              <span className="text-xs font-semibold" style={{ color: '#ffffff', textShadow: '0 1px 3px rgba(0,0,0,0.3)' }}>Education</span>
+            <a href="#education" className="p-1.5 md:p-2 rounded-lg text-center transition-all hover:scale-105 hover:shadow-xl" style={{ backgroundColor: 'rgba(154, 210, 203, 0.2)', backdropFilter: 'blur(10px)', WebkitBackdropFilter: 'blur(10px)', border: '1px solid rgba(255, 255, 255, 0.3)' }}>
+              <div className="text-lg md:text-xl mb-0.5">🎓</div>
+              <span className="text-[10px] md:text-xs font-semibold" style={{ color: '#ffffff', textShadow: '0 1px 3px rgba(0,0,0,0.3)' }}>Education</span>
             </a>
-            <a href="#billing-help" className="p-2 rounded-lg text-center transition-all hover:scale-105 hover:shadow-xl" style={{ backgroundColor: 'rgba(154, 210, 203, 0.2)', backdropFilter: 'blur(10px)', WebkitBackdropFilter: 'blur(10px)', border: '1px solid rgba(255, 255, 255, 0.3)' }}>
-              <div className="text-xl mb-0.5">📊</div>
-              <span className="text-xs font-semibold" style={{ color: '#ffffff', textShadow: '0 1px 3px rgba(0,0,0,0.3)' }}>Billing</span>
+            <a href="#billing-help" className="p-1.5 md:p-2 rounded-lg text-center transition-all hover:scale-105 hover:shadow-xl" style={{ backgroundColor: 'rgba(154, 210, 203, 0.2)', backdropFilter: 'blur(10px)', WebkitBackdropFilter: 'blur(10px)', border: '1px solid rgba(255, 255, 255, 0.3)' }}>
+              <div className="text-lg md:text-xl mb-0.5">📊</div>
+              <span className="text-[10px] md:text-xs font-semibold" style={{ color: '#ffffff', textShadow: '0 1px 3px rgba(0,0,0,0.3)' }}>Billing</span>
             </a>
-            <a href="#projects" className="p-2 rounded-lg text-center transition-all hover:scale-105 hover:shadow-xl" style={{ backgroundColor: 'rgba(154, 210, 203, 0.2)', backdropFilter: 'blur(10px)', WebkitBackdropFilter: 'blur(10px)', border: '1px solid rgba(255, 255, 255, 0.3)' }}>
-              <div className="text-xl mb-0.5">🚀</div>
-              <span className="text-xs font-semibold" style={{ color: '#ffffff', textShadow: '0 1px 3px rgba(0,0,0,0.3)' }}>Projects</span>
+            <a href="#projects" className="p-1.5 md:p-2 rounded-lg text-center transition-all hover:scale-105 hover:shadow-xl" style={{ backgroundColor: 'rgba(154, 210, 203, 0.2)', backdropFilter: 'blur(10px)', WebkitBackdropFilter: 'blur(10px)', border: '1px solid rgba(255, 255, 255, 0.3)' }}>
+              <div className="text-lg md:text-xl mb-0.5">🚀</div>
+              <span className="text-[10px] md:text-xs font-semibold" style={{ color: '#ffffff', textShadow: '0 1px 3px rgba(0,0,0,0.3)' }}>Projects</span>
             </a>
           </div>
         </div>
 
         {/* Scroll Down Indicator */}
-        <a href="#main-content" className="absolute bottom-6 left-1/2 transform -translate-x-1/2 animate-bounce cursor-pointer z-10">
+        <a href="#main-content" className="absolute bottom-1 md:bottom-6 left-1/2 transform -translate-x-1/2 animate-bounce cursor-pointer z-10 hidden md:flex">
           <div className="flex flex-col items-center gap-1">
             <span className="text-xs font-semibold" style={{ color: '#ffffff', textShadow: '0 1px 4px rgba(0,0,0,0.5)' }}>Scroll to explore</span>
             <svg className="w-5 h-5" style={{ color: '#9AD2CB', filter: 'drop-shadow(0 1px 4px rgba(0,0,0,0.5))' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -269,16 +378,21 @@ export default function Home() {
         </div>
 
         {/* DASHBOARD-STYLE CONTENT */}
-        <Box sx={{ maxWidth: '1200px', mx: 'auto', px: { xs: 2, md: 3 }, py: 6 }}>
+        <Box sx={{ 
+          maxWidth: '1200px', 
+          mx: 'auto', 
+          px: { xs: 2, sm: 2.5, md: 3 }, 
+          py: { xs: 4, md: 6 }
+        }}>
           
           {/* KEY METRICS OVERVIEW */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.4 }}
+            viewport={{ once: true, margin: "-50px" }}
           >
-          <Stack direction="row" alignItems="center" spacing={1} sx={{ mb: 1 }}>
+          <Stack direction={{ xs: 'column', sm: 'row' }} alignItems={{ xs: 'flex-start', sm: 'center' }} spacing={1} sx={{ mb: 1 }}>
             <Typography variant="h4" sx={{ fontWeight: 700, color: '#2d8b7f' }}>
               Key Achievements & Impact
             </Typography>
@@ -292,16 +406,16 @@ export default function Home() {
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.6, staggerChildren: 0.1 }}
-            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.4, staggerChildren: 0.05 }}
+            viewport={{ once: true, margin: "-50px" }}
           >
-          <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, 1fr)', lg: 'repeat(4, 1fr)' }, gap: 2.5, mb: 6 }}>
+          <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, 1fr)', lg: 'repeat(4, 1fr)' }, gap: { xs: 2, sm: 2.5 }, mb: 6 }}>
             {/* KPI Card 1 */}
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              viewport={{ once: true }}
+              transition={{ duration: 0.3, delay: 0.05 }}
+              viewport={{ once: true, amount: 0.3 }}
             >
             <Tooltip title="Azure resources managed during Hennepin County internship" arrow placement="top">
               <Card elevation={2} sx={{ borderLeft: '4px solid #2d8b7f', transition: 'transform 0.2s', '&:hover': { transform: 'translateY(-4px)', boxShadow: 4 } }}>
@@ -338,10 +452,10 @@ export default function Home() {
 
             {/* KPI Card 2 */}
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              viewport={{ once: true }}
+              transition={{ duration: 0.3, delay: 0.1 }}
+              viewport={{ once: true, amount: 0.3 }}
             >
             <Tooltip title="FinOps initiatives reducing cloud expenditure" arrow placement="top">
               <Card elevation={2} sx={{ borderLeft: '4px solid #d4a942', transition: 'transform 0.2s', '&:hover': { transform: 'translateY(-4px)', boxShadow: 4 } }}>
@@ -378,10 +492,10 @@ export default function Home() {
 
             {/* KPI Card 3 */}
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-              viewport={{ once: true }}
+              transition={{ duration: 0.3, delay: 0.15 }}
+              viewport={{ once: true, amount: 0.3 }}
             >
             <Tooltip title="Active analysis across commercial and government tenants" arrow placement="top">
               <Card elevation={2} sx={{ borderLeft: '4px solid #0ea5e9', transition: 'transform 0.2s', '&:hover': { transform: 'translateY(-4px)', boxShadow: 4 } }}>
@@ -417,10 +531,10 @@ export default function Home() {
 
             {/* KPI Card 4 */}
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.4 }}
-              viewport={{ once: true }}
+              transition={{ duration: 0.3, delay: 0.2 }}
+              viewport={{ once: true, amount: 0.3 }}
             >
             <Tooltip title="IT infrastructure support across multiple facilities" arrow placement="top">
               <Card elevation={2} sx={{ borderLeft: '4px solid #10b981', transition: 'transform 0.2s', '&:hover': { transform: 'translateY(-4px)', boxShadow: 4 } }}>
@@ -459,22 +573,22 @@ export default function Home() {
           <motion.div
             initial={{ opacity: 0, scaleX: 0 }}
             whileInView={{ opacity: 1, scaleX: 1 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
+            transition={{ duration: 0.4 }}
+            viewport={{ once: true, amount: 0.5 }}
           >
-          <Divider sx={{ my: 6, borderColor: 'transparent', '&::before, &::after': { borderTop: '2px solid', borderImage: 'linear-gradient(90deg, transparent, #2d8b7f, transparent) 1' } }}>
+          <Divider sx={{ my: { xs: 4, md: 6 }, borderColor: 'transparent', '&::before, &::after': { borderTop: '2px solid', borderImage: 'linear-gradient(90deg, transparent, #2d8b7f, transparent) 1' } }}>
             <Chip label="Skills & Experience" sx={{ backgroundColor: '#2d8b7f', color: 'white', fontWeight: 600, px: 2 }} />
           </Divider>
           </motion.div>
 
           {/* SKILLS PROFICIENCY CHART */}
           <motion.div
-            initial={{ opacity: 0, y: 50 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.4 }}
+            viewport={{ once: true, margin: "-50px", amount: 0.2 }}
           >
-          <Box id="azure-services" sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: '2fr 1fr' }, gap: 3, mb: 6 }}>
+          <Box id="azure-services" sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: '2fr 1fr' }, gap: { xs: 2, md: 3 }, mb: 6 }}>
               <Card elevation={2}>
                 <CardContent>
                   <Stack direction="row" alignItems="center" spacing={1} sx={{ mb: 3 }}>
@@ -623,20 +737,20 @@ export default function Home() {
           <motion.div
             initial={{ opacity: 0, scaleX: 0 }}
             whileInView={{ opacity: 1, scaleX: 1 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
+            transition={{ duration: 0.4 }}
+            viewport={{ once: true, amount: 0.5 }}
           >
-          <Divider sx={{ my: 6, borderColor: 'transparent', '&::before, &::after': { borderTop: '2px solid', borderImage: 'linear-gradient(90deg, transparent, #d4a942, transparent) 1' } }}>
+          <Divider sx={{ my: { xs: 4, md: 6 }, borderColor: 'transparent', '&::before, &::after': { borderTop: '2px solid', borderImage: 'linear-gradient(90deg, transparent, #d4a942, transparent) 1' } }}>
             <Chip label="Services & Specializations" sx={{ backgroundColor: '#d4a942', color: 'white', fontWeight: 600, px: 2 }} />
           </Divider>
           </motion.div>
 
           {/* ACTIVITY TIMELINE */}
           <motion.div
-            initial={{ opacity: 0, y: 50 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.4 }}
+            viewport={{ once: true, margin: "-50px", amount: 0.2 }}
           >
           <Card elevation={2} sx={{ mb: 6, position: 'relative', overflow: 'visible' }}>
             {/* Decorative corner accent */}
@@ -653,10 +767,10 @@ export default function Home() {
               <Box>
                 {/* Timeline Item 1 - B.S. Computer Science (2025) */}
                 <motion.div
-                  initial={{ opacity: 0, x: -30 }}
+                  initial={{ opacity: 0, x: -15 }}
                   whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.5, delay: 0.1 }}
-                  viewport={{ once: true }}
+                  transition={{ duration: 0.3, delay: 0.05 }}
+                  viewport={{ once: true, amount: 0.5 }}
                 >
                 <Stack direction="row" spacing={2} sx={{ mb: 3, position: 'relative', '&::before': { content: '""', position: 'absolute', left: '19px', top: '40px', bottom: '-12px', width: '2px', backgroundColor: '#e5e7eb' } }}>
                   <Avatar sx={{ width: 40, height: 40, backgroundColor: '#8b5cf6', zIndex: 1, boxShadow: '0 4px 12px rgba(139, 92, 246, 0.3)' }}>
@@ -676,10 +790,10 @@ export default function Home() {
 
                 {/* Timeline Item 2 - Azure Administrator (2025) */}
                 <motion.div
-                  initial={{ opacity: 0, x: -30 }}
+                  initial={{ opacity: 0, x: -15 }}
                   whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.5, delay: 0.2 }}
-                  viewport={{ once: true }}
+                  transition={{ duration: 0.3, delay: 0.1 }}
+                  viewport={{ once: true, amount: 0.5 }}
                 >
                 <Stack direction="row" spacing={2} sx={{ mb: 3, position: 'relative', '&::before': { content: '""', position: 'absolute', left: '19px', top: '40px', bottom: '-12px', width: '2px', backgroundColor: '#e5e7eb' } }}>
                   <Avatar sx={{ width: 40, height: 40, backgroundColor: '#0ea5e9', zIndex: 1, boxShadow: '0 4px 12px rgba(14, 165, 233, 0.3)' }}>
@@ -699,10 +813,10 @@ export default function Home() {
 
                 {/* Timeline Item 3 - Portfolio Projects (2024-2025) */}
                 <motion.div
-                  initial={{ opacity: 0, x: -30 }}
+                  initial={{ opacity: 0, x: -15 }}
                   whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.5, delay: 0.3 }}
-                  viewport={{ once: true }}
+                  transition={{ duration: 0.3, delay: 0.15 }}
+                  viewport={{ once: true, amount: 0.5 }}
                 >
                 <Stack direction="row" spacing={2} sx={{ mb: 3, position: 'relative', '&::before': { content: '""', position: 'absolute', left: '19px', top: '40px', bottom: '-12px', width: '2px', backgroundColor: '#e5e7eb' } }}>
                   <Avatar sx={{ width: 40, height: 40, backgroundColor: '#f59e0b', zIndex: 1, boxShadow: '0 4px 12px rgba(245, 158, 11, 0.3)' }}>
@@ -722,10 +836,10 @@ export default function Home() {
 
                 {/* Timeline Item 4 - FinOps Certified (2024) */}
                 <motion.div
-                  initial={{ opacity: 0, x: -30 }}
+                  initial={{ opacity: 0, x: -15 }}
                   whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.5, delay: 0.4 }}
-                  viewport={{ once: true }}
+                  transition={{ duration: 0.3, delay: 0.2 }}
+                  viewport={{ once: true, amount: 0.5 }}
                 >
                 <Stack direction="row" spacing={2} sx={{ mb: 3, position: 'relative', '&::before': { content: '""', position: 'absolute', left: '19px', top: '40px', bottom: '-12px', width: '2px', backgroundColor: '#e5e7eb' } }}>
                   <Avatar sx={{ width: 40, height: 40, backgroundColor: '#d4a942', zIndex: 1, boxShadow: '0 4px 12px rgba(212, 169, 66, 0.3)' }}>
@@ -745,10 +859,10 @@ export default function Home() {
 
                 {/* Timeline Item 5 - Azure Fundamentals (2024) */}
                 <motion.div
-                  initial={{ opacity: 0, x: -30 }}
+                  initial={{ opacity: 0, x: -15 }}
                   whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.5, delay: 0.5 }}
-                  viewport={{ once: true }}
+                  transition={{ duration: 0.3, delay: 0.25 }}
+                  viewport={{ once: true, amount: 0.5 }}
                 >
                 <Stack direction="row" spacing={2} sx={{ mb: 3, position: 'relative', '&::before': { content: '""', position: 'absolute', left: '19px', top: '40px', bottom: '-12px', width: '2px', backgroundColor: '#e5e7eb' } }}>
                   <Avatar sx={{ width: 40, height: 40, backgroundColor: '#10b981', zIndex: 1, boxShadow: '0 4px 12px rgba(16, 185, 129, 0.3)' }}>
@@ -768,10 +882,10 @@ export default function Home() {
 
                 {/* Timeline Item 6 - Hennepin County Internship (2024) */}
                 <motion.div
-                  initial={{ opacity: 0, x: -30 }}
+                  initial={{ opacity: 0, x: -15 }}
                   whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.5, delay: 0.6 }}
-                  viewport={{ once: true }}
+                  transition={{ duration: 0.3, delay: 0.3 }}
+                  viewport={{ once: true, amount: 0.5 }}
                 >
                 <Stack direction="row" spacing={2} sx={{ mb: 3, position: 'relative', '&::before': { content: '""', position: 'absolute', left: '19px', top: '40px', bottom: '-12px', width: '2px', backgroundColor: '#e5e7eb' } }}>
                   <Avatar sx={{ width: 40, height: 40, backgroundColor: '#06b6d4', zIndex: 1, boxShadow: '0 4px 12px rgba(6, 182, 212, 0.3)' }}>
@@ -791,10 +905,10 @@ export default function Home() {
 
                 {/* Timeline Item 7 - A.S. Software Application Development (2023) */}
                 <motion.div
-                  initial={{ opacity: 0, x: -30 }}
+                  initial={{ opacity: 0, x: -15 }}
                   whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.5, delay: 0.7 }}
-                  viewport={{ once: true }}
+                  transition={{ duration: 0.3, delay: 0.35 }}
+                  viewport={{ once: true, amount: 0.5 }}
                 >
                 <Stack direction="row" spacing={2}>
                   <Avatar sx={{ width: 40, height: 40, backgroundColor: '#ec4899', zIndex: 1, boxShadow: '0 4px 12px rgba(236, 72, 153, 0.3)' }}>
@@ -831,7 +945,7 @@ export default function Home() {
                 </Typography>
               </Stack>
               <Typography variant="body2" sx={{ mb: 3, color: '#6b7280' }}>
-                Need help with Azure costs? I&apos;m learning to break down complex billing and identify optimization opportunities.
+                Need help with Azure costs? I can help to break down complex billing and identify optimization opportunities.
               </Typography>
 
               <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, 1fr)', md: 'repeat(4, 1fr)' }, gap: 2, mb: 3 }}>
@@ -877,34 +991,41 @@ export default function Home() {
           </Card>
 
           {/* Section Divider */}
-          <Divider sx={{ my: 6, borderColor: 'transparent', '&::before, &::after': { borderTop: '2px solid', borderImage: 'linear-gradient(90deg, transparent, #0ea5e9, transparent) 1' } }}>
+          <Divider sx={{ my: { xs: 4, md: 6 }, borderColor: 'transparent', '&::before, &::after': { borderTop: '2px solid', borderImage: 'linear-gradient(90deg, transparent, #0ea5e9, transparent) 1' } }}>
             <Chip label="Tech Stack & Tools" sx={{ backgroundColor: '#0ea5e9', color: 'white', fontWeight: 600, px: 2 }} />
           </Divider>
 
           {/* TECHNOLOGY STACK WITH TABS */}
           <motion.div
-            initial={{ opacity: 0, y: 50 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.4 }}
+            viewport={{ once: true, margin: "-50px", amount: 0.2 }}
           >
           <Card elevation={2} sx={{ mb: 6 }}>
-            <Tabs value={activeTab} onChange={(e, newValue) => setActiveTab(newValue)} sx={{ borderBottom: 1, borderColor: 'divider', px: 2 }}>
+            <Tabs 
+              value={activeTab} 
+              onChange={(e, newValue) => setActiveTab(newValue)} 
+              variant="scrollable"
+              scrollButtons="auto"
+              allowScrollButtonsMobile
+              sx={{ borderBottom: 1, borderColor: 'divider', px: 2 }}
+            >
               <Tab label="All Technologies" sx={{ fontWeight: 600 }} />
               <Tab label="Cloud & DevOps" sx={{ fontWeight: 600 }} />
               <Tab label="Languages" sx={{ fontWeight: 600 }} />
-              <Tab label="Learning" sx={{ fontWeight: 600 }} />
             </Tabs>
             
             <CardContent>
               {/* Tab 0: All Technologies */}
               {activeTab === 0 && (
                 <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: 'repeat(2, 1fr)' }, gap: 3 }}>
+                  {/* Development & Frameworks */}
                   <Box>
                     <Stack direction="row" alignItems="center" spacing={1} sx={{ mb: 2 }}>
                       <CodeIcon sx={{ color: '#2d8b7f' }} />
                       <Typography variant="h6" sx={{ fontWeight: 700 }}>
-                        Technologies I&apos;ve Worked With
+                        Development & Frameworks
                       </Typography>
                     </Stack>
                     <Stack direction="row" flexWrap="wrap" gap={1}>
@@ -915,17 +1036,18 @@ export default function Home() {
                       <Chip label="PowerShell" variant="outlined" />
                       <Chip label="C++" variant="outlined" sx={{ backgroundColor: '#f3f4f6' }} />
                       <Chip label="C#" variant="outlined" sx={{ backgroundColor: '#f3f4f6' }} />
-                      <Chip label="HTML" variant="outlined" sx={{ backgroundColor: '#f3f4f6' }} />
-                      <Chip label="CSS" variant="outlined" sx={{ backgroundColor: '#f3f4f6' }} />
+                      <Chip label="HTML/CSS" variant="outlined" sx={{ backgroundColor: '#f3f4f6' }} />
                       <Chip label="Tailwind CSS" variant="outlined" />
                       <Chip label="Material UI" variant="outlined" sx={{ backgroundColor: '#0ea5e9', color: 'white' }} />
                     </Stack>
                   </Box>
+
+                  {/* Cloud & DevOps */}
                   <Box>
                     <Stack direction="row" alignItems="center" spacing={1} sx={{ mb: 2 }}>
                       <CloudIcon sx={{ color: '#0ea5e9' }} />
                       <Typography variant="h6" sx={{ fontWeight: 700 }}>
-                        Cloud & Tools
+                        Cloud & DevOps
                       </Typography>
                     </Stack>
                     <Stack direction="row" flexWrap="wrap" gap={1}>
@@ -933,7 +1055,60 @@ export default function Home() {
                       <Chip label="GitHub" variant="outlined" />
                       <Chip label="VS Code" variant="outlined" />
                       <Chip label="GPT-4" variant="outlined" sx={{ backgroundColor: '#10b981', color: 'white' }} />
-                      <Chip label="GPT-5" variant="outlined" sx={{ backgroundColor: '#10b981', color: 'white' }} />
+                      <Chip label="GPT-o1" variant="outlined" sx={{ backgroundColor: '#10b981', color: 'white' }} />
+                    </Stack>
+                  </Box>
+
+                  {/* Infrastructure & Networking */}
+                  <Box>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{ mb: 2 }}>
+                      <DashboardIcon sx={{ color: '#8b5cf6' }} />
+                      <Typography variant="h6" sx={{ fontWeight: 700 }}>
+                        Infrastructure & Networking
+                      </Typography>
+                    </Stack>
+                    <Stack direction="row" flexWrap="wrap" gap={1}>
+                      <Chip label="Servers" variant="outlined" sx={{ backgroundColor: '#8b5cf6', color: 'white' }} />
+                      <Chip label="Relational Databases" variant="outlined" />
+                      <Chip label="Cat5/6 Cabling" variant="outlined" />
+                      <Chip label="PoE" variant="outlined" />
+                      <Chip label="Office Products" variant="outlined" />
+                      <Chip label="Printers" variant="outlined" />
+                    </Stack>
+                  </Box>
+
+                  {/* Business & E-commerce */}
+                  <Box>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{ mb: 2 }}>
+                      <AssessmentIcon sx={{ color: '#d4a942' }} />
+                      <Typography variant="h6" sx={{ fontWeight: 700 }}>
+                        Business & E-commerce
+                      </Typography>
+                    </Stack>
+                    <Stack direction="row" flexWrap="wrap" gap={1}>
+                      <Chip label="POS Systems" variant="outlined" sx={{ backgroundColor: '#d4a942', color: 'white' }} />
+                      <Chip label="Inventory Management" variant="outlined" />
+                      <Chip label="Online Ordering" variant="outlined" />
+                      <Chip label="Payment Processing" variant="outlined" />
+                      <Chip label="Sales" variant="outlined" />
+                      <Chip label="Ticketmaster Referrals" variant="outlined" />
+                    </Stack>
+                  </Box>
+
+                  {/* Web Platforms & Design */}
+                  <Box>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{ mb: 2 }}>
+                      <AutoAwesomeIcon sx={{ color: '#ec4899' }} />
+                      <Typography variant="h6" sx={{ fontWeight: 700 }}>
+                        Web Platforms & Design
+                      </Typography>
+                    </Stack>
+                    <Stack direction="row" flexWrap="wrap" gap={1}>
+                      <Chip label="Wix Website Builder" variant="outlined" sx={{ backgroundColor: '#ec4899', color: 'white' }} />
+                      <Chip label="GoDaddy DNS" variant="outlined" />
+                      <Chip label="Namecheap DNS" variant="outlined" />
+                      <Chip label="Photoshop" variant="outlined" />
+                      <Chip label="Canva" variant="outlined" />
                     </Stack>
                   </Box>
                 </Box>
@@ -998,32 +1173,78 @@ export default function Home() {
                 </Box>
               )}
 
-              {/* Tab 3: Learning */}
-              {activeTab === 3 && (
-                <Box>
-                  <Typography variant="h6" sx={{ fontWeight: 700, mb: 1 }}>Technologies I&apos;m Learning</Typography>
-                  <Typography variant="body2" sx={{ color: '#6b7280', mb: 3 }}>
-                    Expanding my cloud and infrastructure knowledge
+            </CardContent>
+          </Card>
+          </motion.div>
+
+          {/* Section Divider */}
+          <motion.div
+            initial={{ opacity: 0, scaleX: 0 }}
+            whileInView={{ opacity: 1, scaleX: 1 }}
+            transition={{ duration: 0.4 }}
+            viewport={{ once: true, amount: 0.5 }}
+          >
+          <Divider sx={{ my: { xs: 4, md: 6 }, borderColor: 'transparent', '&::before, &::after': { borderTop: '2px solid', borderImage: 'linear-gradient(90deg, transparent, #f59e0b, transparent) 1' } }}>
+            <Chip label="Learning & Growth" sx={{ backgroundColor: '#f59e0b', color: 'white', fontWeight: 600, px: 2 }} />
+          </Divider>
+          </motion.div>
+
+          {/* LEARNING GOALS SECTION */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4 }}
+            viewport={{ once: true, margin: "-50px", amount: 0.2 }}
+          >
+          <Card elevation={2} sx={{ mb: 6, background: 'linear-gradient(135deg, rgba(245, 158, 11, 0.05) 0%, rgba(251, 191, 36, 0.05) 100%)' }}>
+            <CardContent>
+              <Stack direction="row" alignItems="center" spacing={1} sx={{ mb: 2 }}>
+                <AutoAwesomeIcon sx={{ color: '#f59e0b', fontSize: 28 }} />
+                <Typography variant="h5" sx={{ fontWeight: 700, color: '#f59e0b' }}>
+                  What I&apos;m Looking to Learn
+                </Typography>
+              </Stack>
+              <Typography variant="body1" sx={{ color: '#6b7280', mb: 3 }}>
+                I&apos;m looking to learn the following environments and tools to further enhance my cloud expertise:
+              </Typography>
+              
+              <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: 'repeat(2, 1fr)' }, gap: 3 }}>
+                <Paper elevation={0} sx={{ p: 3, border: '2px solid #fbbf24', borderRadius: 2, transition: 'all 0.3s', '&:hover': { transform: 'translateY(-2px)', boxShadow: 3 } }}>
+                  <Stack direction="row" alignItems="center" spacing={1} sx={{ mb: 2 }}>
+                    <CloudIcon sx={{ fontSize: 32, color: '#f59e0b' }} />
+                    <Typography variant="h6" sx={{ fontWeight: 700 }}>Cloud Platforms</Typography>
+                  </Stack>
+                  <Typography variant="body2" sx={{ color: '#6b7280', mb: 2 }}>
+                    Looking to expand into multi-cloud environments beyond Azure
                   </Typography>
-                  <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, 1fr)' }, gap: 2 }}>
-                    <Paper elevation={0} sx={{ p: 2, border: '1px solid #e5e7eb' }}>
-                      <Typography variant="body2" sx={{ fontWeight: 700, mb: 1 }}>Cloud Platforms</Typography>
-                      <Stack direction="row" flexWrap="wrap" gap={1}>
-                        <Chip label="AWS" size="small" sx={{ backgroundColor: '#f59e0b', color: 'white' }} />
-                        <Chip label="Google Cloud" size="small" sx={{ backgroundColor: '#f59e0b', color: 'white' }} />
-                        <Chip label="Oracle Cloud" size="small" sx={{ backgroundColor: '#f59e0b', color: 'white' }} />
-                      </Stack>
-                    </Paper>
-                    <Paper elevation={0} sx={{ p: 2, border: '1px solid #e5e7eb' }}>
-                      <Typography variant="body2" sx={{ fontWeight: 700, mb: 1 }}>Infrastructure as Code</Typography>
-                      <Stack direction="row" flexWrap="wrap" gap={1}>
-                        <Chip label="Terraform" size="small" sx={{ backgroundColor: '#8b5cf6', color: 'white' }} />
-                        <Chip label="Bicep" size="small" sx={{ backgroundColor: '#8b5cf6', color: 'white' }} />
-                      </Stack>
-                    </Paper>
-                  </Box>
-                </Box>
-              )}
+                  <Stack direction="row" flexWrap="wrap" gap={1}>
+                    <Chip label="AWS" size="small" sx={{ backgroundColor: '#f59e0b', color: 'white', fontWeight: 600 }} />
+                    <Chip label="Google Cloud" size="small" sx={{ backgroundColor: '#f59e0b', color: 'white', fontWeight: 600 }} />
+                    <Chip label="Oracle Cloud" size="small" sx={{ backgroundColor: '#f59e0b', color: 'white', fontWeight: 600 }} />
+                  </Stack>
+                </Paper>
+
+                <Paper elevation={0} sx={{ p: 3, border: '2px solid #8b5cf6', borderRadius: 2, transition: 'all 0.3s', '&:hover': { transform: 'translateY(-2px)', boxShadow: 3 } }}>
+                  <Stack direction="row" alignItems="center" spacing={1} sx={{ mb: 2 }}>
+                    <CodeIcon sx={{ fontSize: 32, color: '#8b5cf6' }} />
+                    <Typography variant="h6" sx={{ fontWeight: 700 }}>Infrastructure as Code</Typography>
+                  </Stack>
+                  <Typography variant="body2" sx={{ color: '#6b7280', mb: 2 }}>
+                    Looking to deepen my infrastructure automation skills
+                  </Typography>
+                  <Stack direction="row" flexWrap="wrap" gap={1}>
+                    <Chip label="Terraform" size="small" sx={{ backgroundColor: '#8b5cf6', color: 'white', fontWeight: 600 }} />
+                    <Chip label="Bicep" size="small" sx={{ backgroundColor: '#8b5cf6', color: 'white', fontWeight: 600 }} />
+                    <Chip label="ARM Templates" size="small" sx={{ backgroundColor: '#8b5cf6', color: 'white', fontWeight: 600 }} />
+                  </Stack>
+                </Paper>
+              </Box>
+
+              <Box sx={{ mt: 3, p: 2, backgroundColor: 'rgba(245, 158, 11, 0.1)', borderRadius: 2, borderLeft: '4px solid #f59e0b' }}>
+                <Typography variant="body2" sx={{ fontStyle: 'italic', color: '#6b7280' }}>
+                  💡 <strong>Growth mindset:</strong> I&apos;m eager to learn these technologies to become a more versatile cloud engineer and expand my capabilities across different platforms.
+                </Typography>
+              </Box>
             </CardContent>
           </Card>
           </motion.div>
@@ -1117,20 +1338,20 @@ export default function Home() {
           <motion.div
             initial={{ opacity: 0, scaleX: 0 }}
             whileInView={{ opacity: 1, scaleX: 1 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
+            transition={{ duration: 0.4 }}
+            viewport={{ once: true, amount: 0.5 }}
           >
-          <Divider sx={{ my: 6, borderColor: 'transparent', '&::before, &::after': { borderTop: '2px solid', borderImage: 'linear-gradient(90deg, transparent, #8b5cf6, transparent) 1' } }}>
+          <Divider sx={{ my: { xs: 4, md: 6 }, borderColor: 'transparent', '&::before, &::after': { borderTop: '2px solid', borderImage: 'linear-gradient(90deg, transparent, #8b5cf6, transparent) 1' } }}>
             <Chip label="Portfolio & Projects" sx={{ backgroundColor: '#8b5cf6', color: 'white', fontWeight: 600, px: 2 }} />
           </Divider>
           </motion.div>
 
           {/* PROJECT PORTFOLIO */}
           <motion.div
-            initial={{ opacity: 0, y: 50 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.4 }}
+            viewport={{ once: true, margin: "-50px", amount: 0.2 }}
           >
           <Card id="projects" elevation={2} sx={{ mb: 6 }}>
             <CardContent>
@@ -1141,7 +1362,7 @@ export default function Home() {
                 Production deployments with real impact
               </Typography>
 
-              <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: 'repeat(2, 1fr)' }, gap: 2 }}>
+              <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: 'repeat(2, 1fr)' }, gap: { xs: 2, md: 2 } }}>
                   <Paper elevation={0} sx={{ p: 2, border: '2px solid #e5e7eb', '&:hover': { borderColor: '#2d8b7f', transform: 'translateY(-2px)' }, transition: 'all 0.3s' }}>
                     <Stack direction="row" spacing={2}>
                       <Box sx={{ fontSize: 32 }}>🍺</Box>
@@ -1246,20 +1467,20 @@ export default function Home() {
 
           {/* CALL TO ACTION */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
+            initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
+            transition={{ duration: 0.4 }}
+            viewport={{ once: true, amount: 0.5 }}
           >
           <Card elevation={3} sx={{ background: 'linear-gradient(135deg, #2d8b7f 0%, #1e6b5f 100%)', color: 'white', textAlign: 'center' }}>
-            <CardContent sx={{ py: 4 }}>
+            <CardContent sx={{ py: { xs: 3, md: 4 }, px: { xs: 2, md: 3 } }}>
               <Typography variant="h5" sx={{ fontWeight: 700, mb: 2 }}>
                 Let&apos;s Collaborate on Your Cloud Journey
               </Typography>
               <Typography variant="body1" sx={{ mb: 3, opacity: 0.9 }}>
                 Whether you need Azure optimization, cost analysis, or cloud support im your guy. 
               </Typography>
-              <Stack direction="row" spacing={2} justifyContent="center" flexWrap="wrap">
+              <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2} justifyContent="center" flexWrap="wrap" sx={{ gap: { xs: 1, sm: 2 } }}>
                 <a 
                   href="mailto:AustinStephens103@gmail.com"
                   style={{ 
