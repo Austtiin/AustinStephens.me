@@ -1,0 +1,28 @@
+{
+  "navigationFallback": {
+    "rewrite": "/index.html",
+    "exclude": ["/Files/*", "/_next/*", "/*.{css,scss,js,ts,jpg,jpeg,gif,png,svg,ico,webp,pdf}"]
+  },
+  "routes": [
+    {
+      "route": "/Files/*",
+      "allowedRoles": ["anonymous"]
+    }
+  ],
+  "mimeTypes": {
+    ".json": "application/json",
+    ".pdf": "application/pdf",
+    ".webp": "image/webp",
+    ".png": "image/png",
+    ".jpg": "image/jpeg",
+    ".jpeg": "image/jpeg"
+  },
+  "globalHeaders": {
+    "cache-control": "public, max-age=31536000, immutable"
+  },
+  "responseOverrides": {
+    "404": {
+      "rewrite": "/index.html"
+    }
+  }
+}

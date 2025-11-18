@@ -2,6 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   images: {
+    unoptimized: true,
     // Use remotePatterns instead of the deprecated `domains` list.
     remotePatterns: [
       {
