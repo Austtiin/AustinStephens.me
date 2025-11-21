@@ -2,7 +2,8 @@
 
 import Image from "next/image";
 import CountUp from '../components/CountUp';
-import { Box, Card, CardContent, Typography, Chip, LinearProgress, Paper, Stack, Divider, Tooltip, Badge, Avatar, CircularProgress, Tabs, Tab } from '@mui/material';
+import FinOpsAnalytics from '../components/FinOpsAnalytics';
+import { Box, Card, CardContent, Typography, Chip, LinearProgress, Paper, Stack, Divider, Tooltip, Badge, Avatar, CircularProgress } from '@mui/material';
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 import CloudIcon from '@mui/icons-material/Cloud';
 import SpeedIcon from '@mui/icons-material/Speed';
@@ -18,12 +19,14 @@ import LocalFireDepartmentIcon from '@mui/icons-material/LocalFireDepartment';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
 import { LineChart, Line, AreaChart, Area, ResponsiveContainer } from 'recharts';
-import { useState } from 'react';
+// MUI X Charts (advanced visualizations)
+// Advanced charts moved to FinOpsAnalytics component
+// Removed useState (tabs no longer needed)
 import { motion } from 'framer-motion';
 
 export default function Home() {
   const resumePath = encodeURI("/Files/AStephens_Resume_11142025 (4).pdf");
-  const [activeTab, setActiveTab] = useState(0);
+  // Data sets for KPI sparkline charts (existing)
 
   // Sparkline data for KPI trends
   const workloadsData = [
@@ -38,6 +41,8 @@ export default function Home() {
   const buildingsData = [
     { value: 4 }, { value: 6 }, { value: 8 }, { value: 9 }, { value: 10 }
   ];
+
+  // FinOps analytics charts/data moved to FinOpsAnalytics component
 
   return (
     <div className="min-h-screen antialiased" style={{ 
@@ -576,6 +581,77 @@ export default function Home() {
             transition={{ duration: 0.4 }}
             viewport={{ once: true, amount: 0.5 }}
           >
+          <FinOpsAnalytics />
+
+          {/* LEARNING & GROWTH (Moved Earlier) */}
+          <motion.div
+            initial={{ opacity: 0, scaleX: 0 }}
+            whileInView={{ opacity: 1, scaleX: 1 }}
+            transition={{ duration: 0.4 }}
+            viewport={{ once: true, amount: 0.5 }}
+          >
+          <Divider sx={{ my: { xs: 4, md: 6 }, borderColor: 'transparent', '&::before, &::after': { borderTop: '2px solid', borderImage: 'linear-gradient(90deg, transparent, #f59e0b, transparent) 1' } }}>
+            <Chip label="Learning & Growth" sx={{ backgroundColor: '#f59e0b', color: 'white', fontWeight: 600, px: 2 }} />
+          </Divider>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4 }}
+            viewport={{ once: true, margin: "-50px", amount: 0.2 }}
+          >
+          <Card elevation={2} sx={{ mb: 6, background: 'linear-gradient(135deg, rgba(245, 158, 11, 0.05) 0%, rgba(251, 191, 36, 0.05) 100%)' }}>
+            <CardContent>
+              <Stack direction="row" alignItems="center" spacing={1} sx={{ mb: 2 }}>
+                <AutoAwesomeIcon sx={{ color: '#f59e0b', fontSize: 28 }} />
+                <Typography variant="h5" sx={{ fontWeight: 700, color: '#f59e0b' }}>
+                  What I&apos;m Looking to Learn
+                </Typography>
+              </Stack>
+              <Typography variant="body1" sx={{ color: '#6b7280', mb: 3 }}>
+                I&apos;m looking to learn the following environments and tools to further enhance my cloud expertise:
+              </Typography>
+              <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: 'repeat(2, 1fr)' }, gap: 3 }}>
+                <Paper elevation={0} sx={{ p: 3, border: '2px solid #fbbf24', borderRadius: 2, transition: 'all 0.3s', '&:hover': { transform: 'translateY(-2px)', boxShadow: 3 } }}>
+                  <Stack direction="row" alignItems="center" spacing={1} sx={{ mb: 2 }}>
+                    <CloudIcon sx={{ fontSize: 32, color: '#f59e0b' }} />
+                    <Typography variant="h6" sx={{ fontWeight: 700 }}>Cloud Platforms</Typography>
+                  </Stack>
+                  <Typography variant="body2" sx={{ color: '#6b7280', mb: 2 }}>
+                    Looking to expand into multi-cloud environments beyond Azure
+                  </Typography>
+                  <Stack direction="row" flexWrap="wrap" gap={1}>
+                    <Chip label="AWS" size="small" sx={{ backgroundColor: '#f59e0b', color: 'white', fontWeight: 600 }} />
+                    <Chip label="Google Cloud" size="small" sx={{ backgroundColor: '#f59e0b', color: 'white', fontWeight: 600 }} />
+                    <Chip label="Oracle Cloud" size="small" sx={{ backgroundColor: '#f59e0b', color: 'white', fontWeight: 600 }} />
+                  </Stack>
+                </Paper>
+                <Paper elevation={0} sx={{ p: 3, border: '2px solid #8b5cf6', borderRadius: 2, transition: 'all 0.3s', '&:hover': { transform: 'translateY(-2px)', boxShadow: 3 } }}>
+                  <Stack direction="row" alignItems="center" spacing={1} sx={{ mb: 2 }}>
+                    <CodeIcon sx={{ fontSize: 32, color: '#8b5cf6' }} />
+                    <Typography variant="h6" sx={{ fontWeight: 700 }}>Infrastructure as Code</Typography>
+                  </Stack>
+                  <Typography variant="body2" sx={{ color: '#6b7280', mb: 2 }}>
+                    Looking to deepen my infrastructure automation skills
+                  </Typography>
+                  <Stack direction="row" flexWrap="wrap" gap={1}>
+                    <Chip label="Terraform" size="small" sx={{ backgroundColor: '#8b5cf6', color: 'white', fontWeight: 600 }} />
+                    <Chip label="Bicep" size="small" sx={{ backgroundColor: '#8b5cf6', color: 'white', fontWeight: 600 }} />
+                    <Chip label="ARM Templates" size="small" sx={{ backgroundColor: '#8b5cf6', color: 'white', fontWeight: 600 }} />
+                  </Stack>
+                </Paper>
+              </Box>
+              <Box sx={{ mt: 3, p: 2, backgroundColor: 'rgba(245, 158, 11, 0.1)', borderRadius: 2, borderLeft: '4px solid #f59e0b' }}>
+                <Typography variant="body2" sx={{ fontStyle: 'italic', color: '#6b7280' }}>
+                  💡 <strong>Growth mindset:</strong> I&apos;m eager to learn these technologies to become a more versatile cloud engineer and expand my capabilities across different platforms.
+                </Typography>
+              </Box>
+            </CardContent>
+          </Card>
+          </motion.div>
+
+          {/* ORIGINAL LEARNING SECTION REMOVED BELOW - replaced by earlier placement */}
+
           <Divider sx={{ my: { xs: 4, md: 6 }, borderColor: 'transparent', '&::before, &::after': { borderTop: '2px solid', borderImage: 'linear-gradient(90deg, transparent, #2d8b7f, transparent) 1' } }}>
             <Chip label="Skills & Experience" sx={{ backgroundColor: '#2d8b7f', color: 'white', fontWeight: 600, px: 2 }} />
           </Divider>
@@ -1003,23 +1079,9 @@ export default function Home() {
             viewport={{ once: true, margin: "-50px", amount: 0.2 }}
           >
           <Card elevation={2} sx={{ mb: 6 }}>
-            <Tabs 
-              value={activeTab} 
-              onChange={(e, newValue) => setActiveTab(newValue)} 
-              variant="scrollable"
-              scrollButtons="auto"
-              allowScrollButtonsMobile
-              sx={{ borderBottom: 1, borderColor: 'divider', px: 2 }}
-            >
-              <Tab label="All Technologies" sx={{ fontWeight: 600 }} />
-              <Tab label="Cloud & DevOps" sx={{ fontWeight: 600 }} />
-              <Tab label="Languages" sx={{ fontWeight: 600 }} />
-            </Tabs>
-            
             <CardContent>
-              {/* Tab 0: All Technologies */}
-              {activeTab === 0 && (
-                <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: 'repeat(2, 1fr)' }, gap: 3 }}>
+              <Typography variant="h6" sx={{ fontWeight: 700, mb: 2 }}>All Technologies (TBA)</Typography>
+              <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: 'repeat(2, 1fr)' }, gap: 3 }}>
                   {/* Development & Frameworks */}
                   <Box>
                     <Stack direction="row" alignItems="center" spacing={1} sx={{ mb: 2 }}>
@@ -1039,6 +1101,7 @@ export default function Home() {
                       <Chip label="HTML/CSS" variant="outlined" sx={{ backgroundColor: '#f3f4f6' }} />
                       <Chip label="Tailwind CSS" variant="outlined" />
                       <Chip label="Material UI" variant="outlined" sx={{ backgroundColor: '#0ea5e9', color: 'white' }} />
+                      <Chip label="JetBrains IDE" variant="outlined" sx={{ backgroundColor: '#8b5cf6', color: 'white' }} />
                     </Stack>
                   </Box>
 
@@ -1047,15 +1110,16 @@ export default function Home() {
                     <Stack direction="row" alignItems="center" spacing={1} sx={{ mb: 2 }}>
                       <CloudIcon sx={{ color: '#0ea5e9' }} />
                       <Typography variant="h6" sx={{ fontWeight: 700 }}>
-                        Cloud & DevOps
+                        Cloud & Tools
                       </Typography>
                     </Stack>
                     <Stack direction="row" flexWrap="wrap" gap={1}>
                       <Chip label="Azure" variant="outlined" sx={{ backgroundColor: '#0ea5e9', color: 'white' }} />
                       <Chip label="GitHub" variant="outlined" />
                       <Chip label="VS Code" variant="outlined" />
+                      <Chip label="JetBrains IDE" variant="outlined" sx={{ backgroundColor: '#8b5cf6', color: 'white' }} />
                       <Chip label="GPT-4" variant="outlined" sx={{ backgroundColor: '#10b981', color: 'white' }} />
-                      <Chip label="GPT-o1" variant="outlined" sx={{ backgroundColor: '#10b981', color: 'white' }} />
+                      <Chip label="GPT-5" variant="outlined" sx={{ backgroundColor: '#10b981', color: 'white' }} />
                     </Stack>
                   </Box>
 
@@ -1074,6 +1138,8 @@ export default function Home() {
                       <Chip label="PoE" variant="outlined" />
                       <Chip label="Office Products" variant="outlined" />
                       <Chip label="Printers" variant="outlined" />
+                      <Chip label="Revo DVRs" variant="outlined" />
+                      <Chip label="Security Cameras" variant="outlined" />
                     </Stack>
                   </Box>
 
@@ -1092,6 +1158,9 @@ export default function Home() {
                       <Chip label="Payment Processing" variant="outlined" />
                       <Chip label="Sales" variant="outlined" />
                       <Chip label="Ticketmaster Referrals" variant="outlined" />
+                      <Chip label="Google Analytics" variant="outlined" sx={{ backgroundColor: '#d4a942', color: 'white' }} />
+                      <Chip label="Google Ads" variant="outlined" sx={{ backgroundColor: '#d4a942', color: 'white' }} />
+                      <Chip label="Google AdSense" variant="outlined" sx={{ backgroundColor: '#d4a942', color: 'white' }} />
                     </Stack>
                   </Box>
 
@@ -1105,74 +1174,14 @@ export default function Home() {
                     </Stack>
                     <Stack direction="row" flexWrap="wrap" gap={1}>
                       <Chip label="Wix Website Builder" variant="outlined" sx={{ backgroundColor: '#ec4899', color: 'white' }} />
+                      <Chip label="Squarespace Builder" variant="outlined" sx={{ backgroundColor: '#ec4899', color: 'white' }} />
                       <Chip label="GoDaddy DNS" variant="outlined" />
                       <Chip label="Namecheap DNS" variant="outlined" />
                       <Chip label="Photoshop" variant="outlined" />
                       <Chip label="Canva" variant="outlined" />
                     </Stack>
                   </Box>
-                </Box>
-              )}
-
-              {/* Tab 1: Cloud & DevOps */}
-              {activeTab === 1 && (
-                <Box>
-                  <Typography variant="h6" sx={{ fontWeight: 700, mb: 2 }}>Cloud Platforms & DevOps Tools</Typography>
-                  <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, 1fr)' }, gap: 2 }}>
-                    <Paper elevation={0} sx={{ p: 2, border: '1px solid #e5e7eb' }}>
-                      <Typography variant="body2" sx={{ fontWeight: 700, mb: 1 }}>Azure Services</Typography>
-                      <Stack direction="row" flexWrap="wrap" gap={1}>
-                        <Chip label="Azure Commercial" size="small" sx={{ backgroundColor: '#0ea5e9', color: 'white' }} />
-                        <Chip label="Azure Government" size="small" sx={{ backgroundColor: '#0ea5e9', color: 'white' }} />
-                        <Chip label="Multi-tenant" size="small" sx={{ backgroundColor: '#0ea5e9', color: 'white' }} />
-                      </Stack>
-                    </Paper>
-                    <Paper elevation={0} sx={{ p: 2, border: '1px solid #e5e7eb' }}>
-                      <Typography variant="body2" sx={{ fontWeight: 700, mb: 1 }}>AI & Automation</Typography>
-                      <Stack direction="row" flexWrap="wrap" gap={1}>
-                        <Chip label="GPT-4" size="small" sx={{ backgroundColor: '#10b981', color: 'white' }} />
-                        <Chip label="GPT-5" size="small" sx={{ backgroundColor: '#10b981', color: 'white' }} />
-                        <Chip label="GitHub Copilot" size="small" />
-                      </Stack>
-                    </Paper>
-                  </Box>
-                </Box>
-              )}
-
-              {/* Tab 2: Languages */}
-              {activeTab === 2 && (
-                <Box>
-                  <Typography variant="h6" sx={{ fontWeight: 700, mb: 2 }}>Programming Languages</Typography>
-                  <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', sm: 'repeat(3, 1fr)' }, gap: 2 }}>
-                    <Paper elevation={0} sx={{ p: 2, border: '1px solid #e5e7eb', textAlign: 'center' }}>
-                      <CodeIcon sx={{ fontSize: 40, color: '#2d8b7f', mb: 1 }} />
-                      <Typography variant="body2" sx={{ fontWeight: 700 }}>TypeScript / JavaScript</Typography>
-                      <Chip label="Proficient" size="small" sx={{ backgroundColor: '#2d8b7f', color: 'white', mt: 1 }} />
-                    </Paper>
-                    <Paper elevation={0} sx={{ p: 2, border: '1px solid #e5e7eb', textAlign: 'center' }}>
-                      <CodeIcon sx={{ fontSize: 40, color: '#0ea5e9', mb: 1 }} />
-                      <Typography variant="body2" sx={{ fontWeight: 700 }}>Python</Typography>
-                      <Chip label="Intermediate" size="small" sx={{ backgroundColor: '#0ea5e9', color: 'white', mt: 1 }} />
-                    </Paper>
-                    <Paper elevation={0} sx={{ p: 2, border: '1px solid #e5e7eb', textAlign: 'center' }}>
-                      <CodeIcon sx={{ fontSize: 40, color: '#8b5cf6', mb: 1 }} />
-                      <Typography variant="body2" sx={{ fontWeight: 700 }}>PowerShell</Typography>
-                      <Chip label="Intermediate" size="small" sx={{ backgroundColor: '#8b5cf6', color: 'white', mt: 1 }} />
-                    </Paper>
-                    <Paper elevation={0} sx={{ p: 2, border: '1px solid #e5e7eb', textAlign: 'center' }}>
-                      <CodeIcon sx={{ fontSize: 40, color: '#f59e0b', mb: 1 }} />
-                      <Typography variant="body2" sx={{ fontWeight: 700 }}>C++ / C#</Typography>
-                      <Chip label="Learning" size="small" sx={{ backgroundColor: '#f59e0b', color: 'white', mt: 1 }} />
-                    </Paper>
-                    <Paper elevation={0} sx={{ p: 2, border: '1px solid #e5e7eb', textAlign: 'center' }}>
-                      <CodeIcon sx={{ fontSize: 40, color: '#10b981', mb: 1 }} />
-                      <Typography variant="body2" sx={{ fontWeight: 700 }}>HTML / CSS</Typography>
-                      <Chip label="Proficient" size="small" sx={{ backgroundColor: '#10b981', color: 'white', mt: 1 }} />
-                    </Paper>
-                  </Box>
-                </Box>
-              )}
-
+              </Box>
             </CardContent>
           </Card>
           </motion.div>
