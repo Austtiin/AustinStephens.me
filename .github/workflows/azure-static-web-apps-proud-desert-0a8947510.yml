@@ -28,8 +28,6 @@ jobs:
           node-version: '20.0.0'
           cache: 'npm'
           cache-dependency-path: './web/package-lock.json'
-      - name: Copy Static Web App Config
-        run: cp ./web/staticwebapp.config.json ./web/out/staticwebapp.config.json
       - name: Build And Deploy
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v1
