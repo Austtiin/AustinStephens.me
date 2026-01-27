@@ -1361,6 +1361,26 @@ export default function Home() {
 
                   <Paper elevation={0} sx={{ p: 2, border: '2px solid #e5e7eb', '&:hover': { borderColor: '#2d8b7f', transform: 'translateY(-2px)' }, transition: 'all 0.3s' }}>
                     <Stack direction="row" spacing={2}>
+                      <Box sx={{ fontSize: 32 }}>🧊</Box>
+                      <Box sx={{ flex: 1 }}>
+                        <Stack direction="row" alignItems="center" spacing={1} sx={{ mb: 0.5 }}>
+                          <Typography variant="body1" sx={{ fontWeight: 700 }}>
+                            IceRelay.app
+                          </Typography>
+                          <Chip label="Moderate Traffic" size="small" sx={{ backgroundColor: '#3b82f6', color: 'white', fontSize: '0.7rem', height: '20px' }} />
+                        </Stack>
+                        <Typography variant="caption" sx={{ color: '#6b7280', display: 'block', mb: 1 }}>
+                          Community-driven • Ice thickness measurements • Seasonal
+                        </Typography>
+                        <a href="https://icerelay.app" target="_blank" rel="noopener noreferrer" style={{ color: '#2d8b7f', fontSize: '0.875rem', fontWeight: 600, textDecoration: 'none' }}>
+                          Visit Site →
+                        </a>
+                      </Box>
+                    </Stack>
+                  </Paper>
+
+                  <Paper elevation={0} sx={{ p: 2, border: '2px solid #e5e7eb', '&:hover': { borderColor: '#2d8b7f', transform: 'translateY(-2px)' }, transition: 'all 0.3s' }}>
+                    <Stack direction="row" spacing={2}>
                       <Box sx={{ fontSize: 32 }}>🌟</Box>
                       <Box sx={{ flex: 1 }}>
                         <Stack direction="row" alignItems="center" spacing={1} sx={{ mb: 0.5 }}>
